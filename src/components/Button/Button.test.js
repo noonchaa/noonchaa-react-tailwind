@@ -7,4 +7,5 @@ afterEach(cleanup)
 test('should render a button',()=>{
     render(<Button>text</Button>)
     expect(screen.getByRole('button'))
+    expect(screen.debug())
 })

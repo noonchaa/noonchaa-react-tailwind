@@ -14,7 +14,7 @@ export default {
             file: packageJson.main,
             format: 'cjs',
             sourcemap: true,
-            name: 'noonchaa'
+            name: 'noonchaa-react-tailwind'
         },
         {
             file: packageJson.module,
