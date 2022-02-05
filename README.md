@@ -1,4 +1,6 @@
-# noonchaa-react-tailwind
+# NRT
+
+## noonchaa-react-tailwind
 
 > React component library with tailwindCSS
 
@@ -24,6 +26,8 @@ const Example = () => {
     return <MyComponent>
 }
 ```
+## Documentation
+### [noonchaa-react-tailwind](https://noonchaa.github.io/noonchaa-react-tailwind/)
 
 ## License
 
