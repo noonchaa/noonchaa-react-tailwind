@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.1d766016.css",
-    "main.js": "/static/js/main.69d29b4e.js",
-    "static/js/787.24d30932.chunk.js": "/static/js/787.24d30932.chunk.js",
-    "index.html": "/index.html",
-    "main.1d766016.css.map": "/static/css/main.1d766016.css.map",
-    "main.69d29b4e.js.map": "/static/js/main.69d29b4e.js.map",
-    "787.24d30932.chunk.js.map": "/static/js/787.24d30932.chunk.js.map"
+    "main.css": "/noonchaa-react-tailwind/static/css/main.1d766016.css",
+    "main.js": "/noonchaa-react-tailwind/static/js/main.ed8b835c.js",
+    "static/js/787.24d30932.chunk.js": "/noonchaa-react-tailwind/static/js/787.24d30932.chunk.js",
+    "index.html": "/noonchaa-react-tailwind/index.html",
+    "main.1d766016.css.map": "/noonchaa-react-tailwind/static/css/main.1d766016.css.map",
+    "main.ed8b835c.js.map": "/noonchaa-react-tailwind/static/js/main.ed8b835c.js.map",
+    "787.24d30932.chunk.js.map": "/noonchaa-react-tailwind/static/js/787.24d30932.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1d766016.css",
-    "static/js/main.69d29b4e.js"
+    "static/js/main.ed8b835c.js"
   ]
 }
