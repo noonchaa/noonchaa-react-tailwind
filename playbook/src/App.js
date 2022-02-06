@@ -36,15 +36,6 @@ function App() {
           <Anchor color='red' block>
             <a href='#components'>github</a>
           </Anchor>
-          <Anchor color='red' block>
-            <a href='#components'>Components</a>
-          </Anchor>
-          <Anchor  color='red' block>
-            <a href='#components'>example</a>
-          </Anchor>
-          <Anchor block color='red'>
-            <a href='#components'>github</a>
-          </Anchor>
         </Links>
       </Sub>
       <div style={{height:'100vh'}}></div>
