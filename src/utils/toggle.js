@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import sun from './sun.svg'
 import moon from './moon.svg'
 
-function Toggle({ theme, onClick }) {
-    return (
+const Toggle = ({theme, onClick}) => {
+    return(
         <section data-testid='toggle' className="rounded-full h-5 w-8 cursor-pointer z-50" onClick={onClick}>
             {theme === 'dark' ?
                 <div data-testid='sun' className='rounded-full bg-gray-800 flex justify-start'>
@@ -20,6 +20,7 @@ function Toggle({ theme, onClick }) {
         </section>
     )
 }
+
 Toggle.propTypes = {
     theme: PropTypes.string,
     onClick: PropTypes.func
