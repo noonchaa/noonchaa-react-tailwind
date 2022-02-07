@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "React component library with tailwind css",
   "author": "noonchaa",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/noonchaa/noonchaa-react-tailwind.git"
@@ -26,9 +26,11 @@
     "build": "rollup -c",
     "start": "rollup -c --watch",
     "prepublishOnly": "npm run build",
-    "predeploy": "cd playbook && npm install && npm run build",
-    "deploy": "gh-pages -d playbook/build",
-    "test": "jest --verbose --watch --coverage"
+    "predeploy": "npm run build-sb",
+    "deploy": "gh-pages -d storybook-static",
+    "test": "jest --verbose --watch --coverage",
+    "sb": "start-storybook -p 6006",
+    "build-sb": "build-storybook"
   },
   "peerDependencies": {
     "react": "^17.0.2",
@@ -52,10 +54,16 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-image": "^2.1.1",
     "@rollup/plugin-node-resolve": "^13.1.3",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/react": "^6.4.18",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "autoprefixer": "^10.4.2",
     "babel-jest": "^27.4.6",
+    "babel-loader": "^8.2.3",
     "gh-pages": "^3.2.3",
     "jest": "^27.4.7",
     "postcss": "^8.4.6",
