@@ -28,12 +28,11 @@ export default {
         resolve(),
         babel({ 
             exclude: 'node_modules/**',
-            presets: ['@babel/preset-env', '@babel/preset-react']
+            presets: ['@babel/preset-react']
         }),
         commonjs(),
         postcss(),
         image(),
         terser()
-    ],
-    external: ["react"]
+    ]
 }
