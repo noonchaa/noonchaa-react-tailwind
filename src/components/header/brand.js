@@ -10,7 +10,6 @@ const Brand = ({children,logo}) => {
     )
 }
 Brand.propTypes = {
-    children: PropTypes.node,
     logo: PropTypes.string
 }
 export default Brand

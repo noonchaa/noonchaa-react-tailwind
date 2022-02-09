@@ -1,12 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import sun from './sun.svg'
 import moon from './moon.svg'
+import Dark from './dark'
 
-const Toggle = ({theme, onClick}) => {
+const Toggle = () => {
+    const [colorTheme, setTheme] = Dark()
     return(
-        <section data-testid='toggle' className="rounded-full h-5 w-8 cursor-pointer z-50" onClick={onClick}>
-            {theme === 'dark' ?
+        <section data-testid='toggle' className="rounded-full h-5 w-8 cursor-pointer z-50" onClick={()=>setTheme(colorTheme)}>
+            {colorTheme === 'dark' ?
                 <div data-testid='sun' className='rounded-full bg-gray-800 flex justify-start'>
                     <div className=' rounded-full bg-gray-50 h-5 w-5 border border-gray-800'>
                         <img src={sun} alt='sun' className='text-gray-800 h-full w-full' />
@@ -19,10 +20,5 @@ const Toggle = ({theme, onClick}) => {
                 </div>}
         </section>
     )
-}
-
-Toggle.propTypes = {
-    theme: PropTypes.string,
-    onClick: PropTypes.func
 }
 export default Toggle

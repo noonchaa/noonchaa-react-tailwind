@@ -1,5 +1,5 @@
 import React from 'react'
-import {Hero} from '../index'
+import {Hero} from '..'
 
 export default {
     title: 'Components/Hero',
