@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from 'prop-types'
 
-const Main = ({children,slate,neutral}) => {
-    const theme = slate ? 'bg-slate-50 dark:bg-slate-900': neutral ? 'bg-neutral-50 dark:bg-neutral-900' : 'bg-white dark:bg-black'
+const Main = ({children,white,neutral}) => {
+    const theme = white ? 'bg-white dark:bg-black': neutral ? 'bg-neutral-50 dark:bg-neutral-900' : 'bg-slate-50 dark:bg-slate-900'
     return(
         <main className={theme}>
             {children}
@@ -11,8 +11,7 @@ const Main = ({children,slate,neutral}) => {
 }
 
 Main.propTypes = {
-    children: PropTypes.node,
-    slate: PropTypes.bool,
+    white: PropTypes.bool,
     neutral: PropTypes.bool
 }
 

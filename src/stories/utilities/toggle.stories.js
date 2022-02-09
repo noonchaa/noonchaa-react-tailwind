@@ -1,8 +1,7 @@
 import React from "react";
-import { Toggle, Main } from "..";
+import { Toggle, Main } from "../..";
 
 export default {
-    title: 'Utilities/Toggle',
     component: Toggle,
     argTypes: {
         Descriptions : {
@@ -13,10 +12,11 @@ export default {
 const Template = (args) => {
     return(
         <Main>
-            <Toggle {...args} />
+            <div style={{padding:'24px'}}>
+                <Toggle {...args} />
+            </div>
         </Main>
     )
 }
 
 export const Props = Template.bind({})
-Props.args = {}
