@@ -30,7 +30,6 @@ const Hero = ({children,stack,fullBG}) => {
     )
 }
 Hero.propTypes = {
-    children: PropTypes.node,
     stack: PropTypes.bool,
     fullBG: PropTypes.string
 }

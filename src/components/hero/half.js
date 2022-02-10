@@ -1,10 +1,10 @@
 import React from "react";
 
-const Half = ({children}) => {
+const Sided = ({children}) => {
     return(
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-1/2 lg:px-6">
             {children}
         </div>
     )
 }
-export default Half
+export default Sided

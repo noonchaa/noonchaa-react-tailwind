@@ -9,7 +9,6 @@ const Links = ({children,centered}) => {
     )
 }
 Links.propTypes = {
-    children: PropTypes.node,
     centered: PropTypes.bool
 }
 export default Links
