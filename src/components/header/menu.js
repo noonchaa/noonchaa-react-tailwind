@@ -15,8 +15,6 @@ const Menu = ({children,open,toggle}) => {
 }
 
 Menu.propTypes = {
-    children: PropTypes.node,
     open: PropTypes.bool,
-    toggle: PropTypes.node
 }
 export default Menu

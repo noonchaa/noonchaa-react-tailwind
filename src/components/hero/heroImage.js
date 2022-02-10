@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from 'prop-types'
 
-const HeroImage = ({children,side}) => {
+const HeroImage = ({side,img}) => {
     return(
         side?
-        <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-            {children}
+        <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2 lg:h-auto overflow-hidden">
+            <img class="object-cover w-full h-full max-w-2xl rounded-md" src={img} alt={img}/>
         </div>
         :
         <div className="flex justify-center mt-10">
             <div className="w-full h-64 rounded-xl md:w-4/5">
-            {children}
+                <img class="object-cover w-full h-full max-w-2xl rounded-xl" src={img} alt={img}/>
             </div>
         </div>
     )
 }
 HeroImage.propTypes = {
-    side: PropTypes.bool
+    side: PropTypes.bool,
+    img: PropTypes.string
 }
 export default HeroImage

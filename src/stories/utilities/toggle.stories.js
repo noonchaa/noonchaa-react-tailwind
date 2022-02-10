@@ -3,20 +3,14 @@ import { Toggle, Main } from "../..";
 
 export default {
     component: Toggle,
-    argTypes: {
-        Descriptions : {
-            description: 'Import this component to enabled toggling between light and dark mode'
-        }
-    }
 }
-const Template = (args) => {
+export const Template = () => {
     return(
         <Main>
             <div style={{padding:'24px'}}>
-                <Toggle {...args} />
+                <Toggle/>
             </div>
         </Main>
     )
 }
-
-export const Props = Template.bind({})
+Template.storyName = 'Toggle'
