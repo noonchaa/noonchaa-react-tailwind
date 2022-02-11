@@ -2,7 +2,7 @@ import React from "react";
 
 const Sided = ({children}) => {
     return(
-        <div className="w-full lg:w-1/2 lg:px-6">
+        <div data-testid='side' className="w-full lg:w-1/2 lg:px-6">
             {children}
         </div>
     )

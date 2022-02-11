@@ -15,7 +15,7 @@ const Toggle = () => {
                 </div> :
                 <div data-testid='moon' className='rounded-full bg-gray-50 flex justify-end'>
                     <div className=' rounded-full bg-gray-800 h-5 w-5 border border-gray-50'>
-                        <img src={moon} alt='sun' className='text-gray-50 h-full w-full' />
+                        <img src={moon} alt='moon' className='text-gray-50 h-full w-full' />
                     </div>
                 </div>}
         </section>
