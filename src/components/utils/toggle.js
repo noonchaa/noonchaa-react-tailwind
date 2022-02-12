@@ -1,6 +1,6 @@
 import React from 'react'
-import sun from './sun.svg'
-import moon from './moon.svg'
+import sun from '../../assets/sun.svg'
+import moon from '../../assets/moon.svg'
 import Dark from './dark'
 
 const Toggle = () => {
