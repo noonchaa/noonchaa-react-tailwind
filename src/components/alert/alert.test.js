@@ -1,52 +1,47 @@
 import React from 'react'
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
-import Alert from './alert'
+import {Danger, Info, Success, Warning, Notification, SuccessFull, InfoFull, WarningFull, DangerFull} from '.'
 
 afterEach(cleanup)
 
-test('render alert',()=>{
-    render(<Alert>Alert</Alert>)
-    expect(screen.getByText('Alert')).toBeInTheDocument()
+test('success',()=>{
+    render(<Success title='success'>Message</Success>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('hide full alert',()=>{
-    render(<Alert full>Alert</Alert>)
-    expect(screen.getByTestId('full')).toHaveClass('container')
-    fireEvent.click(screen.getByRole('button'))
-    expect(screen.getByTestId('full')).toHaveClass('hidden')
+test('info',()=>{
+    render(<Info title='success'>Message</Info>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('bg color as type',()=>{
-    render(<Alert full success>Alert</Alert>)
-    expect(screen.getByTestId('full')).toHaveClass(`bg-emerald-500`)
+test('warning',()=>{
+    render(<Warning title='success'>Message</Warning>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('bg color as type',()=>{
-    render(<Alert full info>Alert</Alert>)
-    expect(screen.getByTestId('full')).toHaveClass(`bg-blue-500`)
+test('danger',()=>{
+    render(<Danger title='success'>Message</Danger>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('bg color as type',()=>{
-    render(<Alert full warning>Alert</Alert>)
-    expect(screen.getByTestId('full')).toHaveClass(`bg-yellow-400`)
+test('notify',()=>{
+    render(<Notification>Message</Notification>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
+    expect(screen.getByRole('img')).toBeInTheDocument()
 })
-test('bg color as type',()=>{
-    render(<Alert full danger>Alert</Alert>)
-    expect(screen.getByTestId('full')).toHaveClass(`bg-red-500`)
+test('notify img',()=>{
+    render(<Notification img=''>Message</Notification>)
+    expect(screen.getByTestId('svg')).toBeInTheDocument()
 })
-test('cek svg',()=>{
-    render(<Alert success/>)
-    expect(screen.getByTestId('success')).toBeInTheDocument()
+test('success full',()=>{
+    render(<SuccessFull title='success'>Message</SuccessFull>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('cek svg',()=>{
-    render(<Alert info/>)
-    expect(screen.getByTestId('info')).toBeInTheDocument()
+test('info full',()=>{
+    render(<InfoFull title='success'>Message</InfoFull>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('cek svg',()=>{
-    render(<Alert warning/>)
-    expect(screen.getByTestId('warning')).toBeInTheDocument()
+test('warning full',()=>{
+    render(<WarningFull title='success'>Message</WarningFull>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
-test('cek svg',()=>{
-    render(<Alert danger/>)
-    expect(screen.getByTestId('danger')).toBeInTheDocument()
-})
-test('cek svg',()=>{
-    render(<Alert notify/>)
-    expect(screen.getByTestId('notify')).toBeInTheDocument()
+test('danger full',()=>{
+    render(<DangerFull title='success'>Message</DangerFull>)
+    expect(screen.getByText('Message')).toBeInTheDocument()
 })
