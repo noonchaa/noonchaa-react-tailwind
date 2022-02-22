@@ -2,6 +2,7 @@ import './index.css'
 
 export * from './alert'
 export * from './auth'
+export * from './breadcrumbs'
 export {default as Main} from './layout/main'
 export {default as Container} from './layout/container'
 export {default as Toggle} from './utils/toggle'
