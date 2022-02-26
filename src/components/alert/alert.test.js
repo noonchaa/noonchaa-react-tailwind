@@ -1,9 +1,17 @@
 import React from 'react'
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
-import {Danger, Info, Success, Warning, Notification, SuccessFull, InfoFull, WarningFull, DangerFull} from '.'
+import {Danger, Info, Success, Warning, Notification, SuccessFull, InfoFull, WarningFull, DangerFull, Alert, AlertFull} from '.'
 
 afterEach(cleanup)
 
+test('alert',()=>{
+    render(<Alert title='Alert'/>)
+    expect(screen.getByText('Alert')).toBeInTheDocument()
+})
+test('alert full',()=>{
+    render(<AlertFull>Alert</AlertFull>)
+    expect(screen.getByText('Alert')).toBeInTheDocument()
+})
 test('success',()=>{
     render(<Success title='success'>Message</Success>)
     expect(screen.getByText('Message')).toBeInTheDocument()
@@ -30,18 +38,18 @@ test('notify img',()=>{
     expect(screen.getByTestId('svg')).toBeInTheDocument()
 })
 test('success full',()=>{
-    render(<SuccessFull title='success'>Message</SuccessFull>)
+    render(<SuccessFull>Message</SuccessFull>)
     expect(screen.getByText('Message')).toBeInTheDocument()
 })
 test('info full',()=>{
-    render(<InfoFull title='success'>Message</InfoFull>)
+    render(<InfoFull>Message</InfoFull>)
     expect(screen.getByText('Message')).toBeInTheDocument()
 })
 test('warning full',()=>{
-    render(<WarningFull title='success'>Message</WarningFull>)
+    render(<WarningFull>Message</WarningFull>)
     expect(screen.getByText('Message')).toBeInTheDocument()
 })
 test('danger full',()=>{
-    render(<DangerFull title='success'>Message</DangerFull>)
+    render(<DangerFull>Message</DangerFull>)
     expect(screen.getByText('Message')).toBeInTheDocument()
 })
