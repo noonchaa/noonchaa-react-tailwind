@@ -1,8 +1,67 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types'
 
-const LoginSideImage = ({brand, onSubmit, forget, register, loading,google,bgUrl}) => {
+const loadingSvg = <svg width="40" height="24" className="mx-auto" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                    <circle cx="15" cy="15" r="15">
+                        <animate attributeName="r" from="15" to="15"
+                                begin="0s" dur="0.8s"
+                                values="15;9;15" calcMode="linear"
+                                repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" from="1" to="1"
+                                begin="0s" dur="0.8s"
+                                values="1;.5;1" calcMode="linear"
+                                repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="60" cy="15" r="9" fillOpacity="0.3">
+                        <animate attributeName="r" from="9" to="9"
+                                begin="0s" dur="0.8s"
+                                values="9;15;9" calcMode="linear"
+                                repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" from="0.5" to="0.5"
+                                begin="0s" dur="0.8s"
+                                values=".5;1;.5" calcMode="linear"
+                                repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="105" cy="15" r="15">
+                        <animate attributeName="r" from="15" to="15"
+                                begin="0s" dur="0.8s"
+                                values="15;9;15" calcMode="linear"
+                                repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" from="1" to="1"
+                                begin="0s" dur="0.8s"
+                                values="1;.5;1" calcMode="linear"
+                                repeatCount="indefinite" />
+                    </circle>
+                    </svg>
+
+const LoginSideImage = ({brand, onSubmit, forget, register, loading, google, bgUrl, lead}) => {
     const [view, setView] = useState(false)
+    const [emailVer, setEmailVer] = useState(true)
+    const [passVer, setPasVer] = useState(true)
+    const [lowerCase, setLowerCase] = useState(true)
+    const [uppercase, setUppercase] = useState(true)
+    const [num, setNum] = useState(true)
+    const [sym, setSym] = useState(true)
+    const [long, setLong] = useState(true)
+
+    const emailVerification = (e) => {
+        const format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        format.test(e.target.value)?setEmailVer(true):setEmailVer(false)
+    }
+    const passwordVerification = (e) => {
+        const format = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+        format.test(e.target.value)?setPasVer(true):setPasVer(false)
+        const lower = /(?=.*?[a-z])/
+        lower.test(e.target.value)?setLowerCase(true):setLowerCase(false)
+        const upper = /(?=.*?[A-Z])/
+        upper.test(e.target.value)?setUppercase(true):setUppercase(false)
+        const numb = /(?=.*?[0-9])/
+        numb.test(e.target.value)?setNum(true):setNum(false)
+        const symbol = /(?=.*?[#?!@$%^&*-])/
+        symbol.test(e.target.value)?setSym(true):setSym(false)
+        e.target.value.length >= 8 ? setLong(true):setLong(false)
+    }
+
     return(
         <div data-testid='sideImage' className="flex max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
             <div className="hidden bg-cover lg:block lg:w-1/2" style={{backgroundImage:`url(${bgUrl})`}}></div>
@@ -10,7 +69,7 @@ const LoginSideImage = ({brand, onSubmit, forget, register, loading,google,bgUrl
             <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
                 <h2 className="text-2xl font-semibold text-center text-gray-700 dark:text-white">{brand}</h2>
 
-                <p className="text-xl text-center text-gray-600 dark:text-gray-200">Welcome back!</p>
+                <p className="text-xl text-center text-gray-600 dark:text-gray-200">{lead}</p>
 
                 <div className="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-200 transform border rounded-lg dark:border-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={google}>
                     <div className="px-4 py-2">
@@ -36,20 +95,16 @@ const LoginSideImage = ({brand, onSubmit, forget, register, loading,google,bgUrl
                 <form onSubmit={onSubmit}>
                     <div className="mt-4">
                         <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="email">Email Address</label>
-                        <input id="email" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" required/>
+                        <input data-testid='email' id="email" className={`block w-full px-4 py-2 ${emailVer?'text-gray-700 dark:text-gray-300':'text-red-600'} bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300`} onBlur={(e)=>emailVerification(e)} type="email" required/>
                     </div>
 
                     <div className="mt-4 relative">
                         <div className="flex justify-between">
                             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="password">Password</label>
-                            {forget?
-                            <p className="text-xs text-gray-500 dark:text-gray-300 hover:underline">{forget}</p>
-                            :
-                            <a href="#" className="text-xs text-gray-500 dark:text-gray-300 hover:underline">Forget Password?</a>
-                            }
+                            <div className="text-xs text-gray-500 dark:text-gray-300 hover:underline cursor-pointer">{forget}</div>
                         </div>
 
-                        <input id="password" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type={view?'text':'password'} required />
+                        <input data-testid='password' id="password" className={`block w-full px-4 py-2 ${passVer?'text-gray-700 dark:text-gray-300':'text-red-600'} bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300`} type={view?'text':'password'} onBlur={(e)=>passwordVerification(e)} required />
                         <span data-testid='view' className="absolute inset-y-0 right-0 top-6 flex items-center pr-3 cursor-pointer" onClick={()=>setView(!view)}>
                             {view?
                             <svg data-testid='open-eye' xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,24 +118,25 @@ const LoginSideImage = ({brand, onSubmit, forget, register, loading,google,bgUrl
                             }
                         </span>
                     </div>
+                    {!long && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 8 characters long</p>}
+                    {!lowerCase && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 lowercase character</p>}
+                    {!uppercase && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 uppercase character</p>}
+                    {!num && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 number</p>}
+                    {!sym && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 of {`(# ? ! @ $ % ^ & * -)`}</p>}
 
                     <div className="mt-8">
-                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                            {loading?
-                            <p className="animate-pulse">Loading</p>
-                            :
-                            'Login'}
+                        <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded hover:bg-gray-600 focus:outline-none focus:bg-gray-600 disabled:cursor-not-allowed" disabled={emailVer && passVer?false:true}>
+                        {loading?
+                        loadingSvg
+                        :
+                        'Login'}
                         </button>
                     </div>
                 </form>
                 
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
-                    {register?
                     <span className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">{register}</span>
-                    :
-                    <a href="#" className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">or sign up</a>
-                    }
                     <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
                 </div>
             </div>
@@ -88,8 +144,20 @@ const LoginSideImage = ({brand, onSubmit, forget, register, loading,google,bgUrl
     )
 }
 LoginSideImage.propTypes = {
+    bgUrl: PropTypes.string,
     brand: PropTypes.string,
-    onSubmit: PropTypes.func
+    lead: PropTypes.string,
+    forget: PropTypes.element,
+    register: PropTypes.element,
+    onSubmit: PropTypes.func,
+    loading: PropTypes.bool
+}
+LoginSideImage.defaultProps = {
+    brand: 'NRT',
+    lead: 'Welcome back!',
+    bgUrl: 'https://source.unsplash.com/3IR3fozccY8',
+    forget: <p>Forget Password?</p>,
+    register: <p>or sign up</p>
 }
 
 export default LoginSideImage
