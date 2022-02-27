@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes, { element } from 'prop-types'
+import PropTypes from 'prop-types'
 
 const loadingSvg = <svg width="40" height="24" className="mx-auto" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="#fff">
                     <circle cx="15" cy="15" r="15">

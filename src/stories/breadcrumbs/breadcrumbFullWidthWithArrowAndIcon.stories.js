@@ -1,13 +1,13 @@
-import {Breadcrumb} from '../..'
+import {BreadcrumbFullWidthWithArrow} from '../..'
 
 export default {
-    component: Breadcrumb
+    component: BreadcrumbFullWidthWithArrow
 }
 
 const link = ['Account','Profile','setting']
 
-export const breadcrumbWithIcon = () => (
-    <Breadcrumb
+export const breadcrumbFullWidthWithArrowAndIcon = () => (
+    <BreadcrumbFullWidthWithArrow
     links={link.map((item,index)=>(
         <a key={index}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-flex mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
