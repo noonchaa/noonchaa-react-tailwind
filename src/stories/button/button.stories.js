@@ -11,7 +11,7 @@ const button = (args) => <Button {...args}/>
 
 export const standard = button.bind({})
 standard.args = {
-    children: 'Button'
+    children: 'Button one'
 }
 export const withIcon = button.bind({})
 withIcon.args = {
