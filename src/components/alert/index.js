@@ -1,3 +1,5 @@
+export {default as Alert} from './alert'
+export {default as AlertFull} from './alertFull'
 export {default as Success} from './success'
 export {default as Info} from './info'
 export {default as Warning} from './warning'

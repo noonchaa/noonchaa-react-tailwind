@@ -1,8 +1,67 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types'
 
-const LoginWithSosMed = ({brand, onSubmit, forget, register, loading, google, twitter}) => {
+const loadingSvg = <svg width="40" height="24" className="mx-auto" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+                    <circle cx="15" cy="15" r="15">
+                        <animate attributeName="r" from="15" to="15"
+                                begin="0s" dur="0.8s"
+                                values="15;9;15" calcMode="linear"
+                                repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" from="1" to="1"
+                                begin="0s" dur="0.8s"
+                                values="1;.5;1" calcMode="linear"
+                                repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="60" cy="15" r="9" fillOpacity="0.3">
+                        <animate attributeName="r" from="9" to="9"
+                                begin="0s" dur="0.8s"
+                                values="9;15;9" calcMode="linear"
+                                repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" from="0.5" to="0.5"
+                                begin="0s" dur="0.8s"
+                                values=".5;1;.5" calcMode="linear"
+                                repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="105" cy="15" r="15">
+                        <animate attributeName="r" from="15" to="15"
+                                begin="0s" dur="0.8s"
+                                values="15;9;15" calcMode="linear"
+                                repeatCount="indefinite" />
+                        <animate attributeName="fill-opacity" from="1" to="1"
+                                begin="0s" dur="0.8s"
+                                values="1;.5;1" calcMode="linear"
+                                repeatCount="indefinite" />
+                    </circle>
+                    </svg>
+
+const LoginWithSosMed = ({brand, onSubmit, forget, register, loading, google, twitter, addMedia1, addMedia2, addMedia3, addMedia4, addMedia5}) => {
     const [view, setView] = useState(false)
+    const [emailVer, setEmailVer] = useState(true)
+    const [passVer, setPasVer] = useState(true)
+    const [lowerCase, setLowerCase] = useState(true)
+    const [uppercase, setUppercase] = useState(true)
+    const [num, setNum] = useState(true)
+    const [sym, setSym] = useState(true)
+    const [long, setLong] = useState(true)
+
+    const emailVerification = (e) => {
+        const format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        format.test(e.target.value)?setEmailVer(true):setEmailVer(false)
+    }
+    const passwordVerification = (e) => {
+        const format = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+        format.test(e.target.value)?setPasVer(true):setPasVer(false)
+        const lower = /(?=.*?[a-z])/
+        lower.test(e.target.value)?setLowerCase(true):setLowerCase(false)
+        const upper = /(?=.*?[A-Z])/
+        upper.test(e.target.value)?setUppercase(true):setUppercase(false)
+        const numb = /(?=.*?[0-9])/
+        numb.test(e.target.value)?setNum(true):setNum(false)
+        const symbol = /(?=.*?[#?!@$%^&*-])/
+        symbol.test(e.target.value)?setSym(true):setSym(false)
+        e.target.value.length >= 8 ? setLong(true):setLong(false)
+    }
+
     return(
         <div data-testid='social' className="w-full max-w-sm p-6 m-auto bg-white rounded-md shadow-md dark:bg-gray-800">
             <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">{brand}</h1>
@@ -10,20 +69,17 @@ const LoginWithSosMed = ({brand, onSubmit, forget, register, loading, google, tw
             <form className="mt-6" onSubmit={onSubmit}>
                 <div>
                     <label htmlFor="email" className="block text-sm text-gray-800 dark:text-gray-200">Email</label>
-                    <input type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required id="email"/>
+                    <input data-testid='email' type="email" className={`block w-full px-4 py-2 mt-2 ${emailVer?'text-gray-700 dark:text-gray-300':'text-red-600'} bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40`} onBlur={(e)=>emailVerification(e)} required id="email"/>
                 </div>
 
                 <div className="mt-4 relative">
                     <div className="flex items-center justify-between">
                         <label htmlFor="password" className="block text-sm text-gray-800 dark:text-gray-200">Password</label>
-                        {forget?
-                        <p className="text-xs text-gray-600 dark:text-gray-400 hover:underline">{forget}</p>
-                        :
-                        <a href="#" className="text-xs text-gray-600 dark:text-gray-400 hover:underline">Forget Password?</a>
-                        }
+                        <div className="text-xs text-gray-600 dark:text-gray-400 hover:underline cursor-pointer">{forget}</div>
                     </div>
 
-                    <input type={view?'text':'password'} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required id="password"/>
+                    <input data-testid='password' type={view?'text':'password'} className={`block w-full px-4 py-2 mt-2 ${passVer?'text-gray-700 dark:text-gray-300':'text-red-600'} bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40`} onBlur={(e)=>passwordVerification(e)} required id="password"/>
+
                     <span data-testid='view' className="absolute inset-y-0 right-0 top-6 flex items-center pr-3 cursor-pointer" onClick={()=>setView(!view)}>
                         {view?
                         <svg data-testid='open-eye' xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -37,12 +93,17 @@ const LoginWithSosMed = ({brand, onSubmit, forget, register, loading, google, tw
                         }
                     </span>
                 </div>
+                {!long && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 8 characters long</p>}
+                {!lowerCase && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 lowercase character</p>}
+                {!uppercase && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 uppercase character</p>}
+                {!num && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 number</p>}
+                {!sym && <p className="text-xs text-red-600 ml-4 mt-1">Password must be have at least 1 of {`(# ? ! @ $ % ^ & * -)`}</p>}
 
                 <div className="mt-6">
                     <button
-                        className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+                        className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600 disabled:cursor-not-allowed" disabled={emailVer && passVer?false:true}>
                         {loading?
-                        <p className="animate-pulse">Loading</p>
+                        loadingSvg
                         :
                         'Login'}
                     </button>
@@ -57,15 +118,13 @@ const LoginWithSosMed = ({brand, onSubmit, forget, register, loading, google, tw
                 <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
             </div>
 
-            <div className="flex items-center mt-6 -mx-2">
-                <button type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:bg-blue-400 focus:outline-none" onClick={google}>
-                    <svg className="w-4 h-4 mx-2 fill-current" viewBox="0 0 24 24">
+            <div className="flex justify-center items-center mt-6 -mx-2">
+                <button className="p-2 mx-2 text-sm font-medium text-gray-500 transition-colors duration-200 transform bg-gray-300 rounded-md hover:bg-gray-200" onClick={google}>
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                         <path
                             d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z">
                         </path>
                     </svg>
-
-                    <span className="hidden mx-2 sm:inline">Sign in with Google</span>
                 </button>
 
                 <button className="p-2 mx-2 text-sm font-medium text-gray-500 transition-colors duration-200 transform bg-gray-300 rounded-md hover:bg-gray-200" onClick={twitter}>
@@ -75,22 +134,41 @@ const LoginWithSosMed = ({brand, onSubmit, forget, register, loading, google, tw
                         </path>
                     </svg>
                 </button>
+                {addMedia1}
+                {addMedia2}
+                {addMedia3}
+                {addMedia4}
+                {addMedia5}
             </div>
+            <div className="flex items-center justify-between mt-4">
+                <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
 
-            <p className="mt-8 text-xs font-light text-center text-gray-400"> Don't have an account?
-            {register?
-                <span className="font-medium text-gray-700 dark:text-gray-200 hover:underline">&nbsp;{register}</span>
-                :
-                <a href="#" className="font-medium text-gray-700 dark:text-gray-200 hover:underline">&nbsp;Create One</a>
-            }
-            </p>
+                <div className="text-xs text-center text-gray-500 uppercase dark:text-gray-400 cursor-pointer">{register}</div>
+
+                <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
+            </div>
         </div>
     )
 }
 
 LoginWithSosMed.propTypes = {
     brand: PropTypes.string,
-    onSubmit: PropTypes.func
+    forget: PropTypes.element,
+    register: PropTypes.element,
+    onSubmit: PropTypes.func,
+    loading: PropTypes.bool,
+    google: PropTypes.func,
+    twitter: PropTypes.func,
+    addMedia1: PropTypes.element,
+    addMedia2: PropTypes.element,
+    addMedia3: PropTypes.element,
+    addMedia4: PropTypes.element,
+    addMedia5: PropTypes.element
+}
+LoginWithSosMed.defaultProps = {
+    brand: 'NRT',
+    forget: <p>Forget Password?</p>,
+    register: <p>or sign up</p>
 }
 
 export default LoginWithSosMed

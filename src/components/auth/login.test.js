@@ -1,6 +1,6 @@
 import React from 'react'
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
-import {Login, LoginSideImage, LoginWithSosMed} from '.'
+import {Login, LoginFillImage, LoginSideImage, LoginWithSosMed} from '.'
 
 afterEach(cleanup)
 
@@ -15,11 +15,24 @@ test('login',()=>{
 test('login forget password & register link',()=>{
     render(<Login forget={<a>forgot password</a>} loading register={<a>Create one</a>}/>)
     expect(screen.getByText('forgot password')).toBeInTheDocument()
-    expect(screen.getByText('Loading')).toBeInTheDocument()
     expect(screen.getByText('Create one')).toBeInTheDocument()
 })
+test('login input',()=>{
+    render(<Login/>)
+    expect(screen.getByTestId('email')).toBeInTheDocument()
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email@gmail.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'password'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'P@ssw0rd'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'SDF'}})
+    expect(screen.getByText('Password must be have at least 1 lowercase character')).toBeInTheDocument()
+})
 
-test('with social network',()=>{
+test('with social media',()=>{
     render(<LoginWithSosMed/>)
     expect(screen.getByTestId('social')).toBeInTheDocument()
     expect(screen.getByTestId('view')).toBeInTheDocument()
@@ -27,11 +40,24 @@ test('with social network',()=>{
     fireEvent.click(screen.getByTestId('view'))
     expect(screen.getByTestId('open-eye')).toBeInTheDocument()
 })
-test('login forget password & register link',()=>{
+test('login with social media forget password & register link',()=>{
     render(<LoginWithSosMed forget={<a>forgot password</a>} loading register={<a>Create one</a>}/>)
     expect(screen.getByText('forgot password')).toBeInTheDocument()
-    expect(screen.getByText('Loading')).toBeInTheDocument()
     expect(screen.getByText('Create one')).toBeInTheDocument()
+})
+test('login with social media input',()=>{
+    render(<LoginWithSosMed/>)
+    expect(screen.getByTestId('email')).toBeInTheDocument()
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email@gmail.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'password'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'P@ssw0rd'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'SDF'}})
+    expect(screen.getByText('Password must be have at least 1 lowercase character')).toBeInTheDocument()
 })
 
 test('with side image',()=>{
@@ -42,9 +68,50 @@ test('with side image',()=>{
     fireEvent.click(screen.getByTestId('view'))
     expect(screen.getByTestId('open-eye')).toBeInTheDocument()
 })
-test('login forget password & register link',()=>{
+test('login with side image forget password & register link',()=>{
     render(<LoginSideImage forget={<a>forgot password</a>} loading register={<a>Create one</a>}/>)
     expect(screen.getByText('forgot password')).toBeInTheDocument()
-    expect(screen.getByText('Loading')).toBeInTheDocument()
     expect(screen.getByText('Create one')).toBeInTheDocument()
+})
+test('login with side input',()=>{
+    render(<LoginSideImage/>)
+    expect(screen.getByTestId('email')).toBeInTheDocument()
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email@gmail.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'password'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'P@ssw0rd'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'SDF'}})
+    expect(screen.getByText('Password must be have at least 1 lowercase character')).toBeInTheDocument()
+})
+
+test('fill image',()=>{
+    render(<LoginFillImage/>)
+    expect(screen.getByTestId('fillImage')).toBeInTheDocument()
+    expect(screen.getByTestId('view')).toBeInTheDocument()
+    expect(screen.getByTestId('close-eye')).toBeInTheDocument()
+    fireEvent.click(screen.getByTestId('view'))
+    expect(screen.getByTestId('open-eye')).toBeInTheDocument()
+})
+test('login fill image forget password & register link',()=>{
+    render(<LoginFillImage forget={<a>forgot password</a>} loading register={<a>Create one</a>}/>)
+    expect(screen.getByText('forgot password')).toBeInTheDocument()
+    expect(screen.getByText('Create one')).toBeInTheDocument()
+})
+test('login fill image input',()=>{
+    render(<LoginFillImage/>)
+    expect(screen.getByTestId('email')).toBeInTheDocument()
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('email'),{target:{value:'email@gmail.com'}})
+    expect(screen.getByTestId('email')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'password'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-red-600')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'P@ssw0rd'}})
+    expect(screen.getByTestId('password')).toHaveClass('text-gray-700')
+    fireEvent.blur(screen.getByTestId('password'),{target:{value:'SDF'}})
+    expect(screen.getByText('Password must be have at least 1 lowercase character')).toBeInTheDocument()
 })
