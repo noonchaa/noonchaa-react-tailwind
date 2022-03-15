@@ -1,0 +1,7 @@
+export {default as Article} from './article'
+export {default as ArticleWithImage} from './articleImage'
+export {default as Product} from './product'
+export {default as ProductRating} from './productRating'
+export {default as SimpleProduct} from './simpleProduct'
+export {default as Testimony} from './testimony'
+export {default as User} from './user'
