@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Product = ({title,desc,price,buttonText,buttonClick,img}) => {
     return (
-        <div className="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div data-testid='product' className="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <div className="px-4 py-2">
                 <h1 className="text-3xl font-bold text-gray-800 uppercase dark:text-white">{title}</h1>
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{desc}</p>
