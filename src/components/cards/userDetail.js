@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const UserDetail = ({img,status,statusIcon,name,role,job,address,email}) => (
     <div data-testid='detail' className="max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-        <img className="object-cover object-center w-full h-56" src={img} alt="avatar"/>
+        <div className="object-cover object-center w-full h-56 overflow-hidden">{img}</div>
         
         <div className="flex items-center px-6 py-3 bg-gray-900">
             {statusIcon}
@@ -11,7 +11,7 @@ const UserDetail = ({img,status,statusIcon,name,role,job,address,email}) => (
         </div>
 
         <div className="px-6 py-4">
-            <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{name}</h1>
+            <div className="text-xl font-semibold text-gray-800 dark:text-white cursor-pointer">{name}</div>
 
             <p className="py-2 text-gray-700 dark:text-gray-400">{role}</p>
             
@@ -43,10 +43,10 @@ const UserDetail = ({img,status,statusIcon,name,role,job,address,email}) => (
 )
 
 UserDetail.propTypes = {
-    img: PropTypes.string,
+    img: PropTypes.element,
     status: PropTypes.string,
     statusIcon: PropTypes.element,
-    name: PropTypes.string,
+    name: PropTypes.element,
     role: PropTypes.string,
     job: PropTypes.string,
     address: PropTypes.string,

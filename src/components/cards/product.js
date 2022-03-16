@@ -9,7 +9,7 @@ const Product = ({title,desc,price,buttonText,buttonClick,img}) => {
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{desc}</p>
             </div>
     
-            <img className="object-cover w-full h-48 mt-2" src={img} alt="product"/>
+            <div className="object-cover w-full h-48 mt-2 overflow-hidden">{img}</div>
     
             <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
                 <h1 className="text-lg font-bold text-white">{price}</h1>
@@ -25,7 +25,7 @@ Product.propTypes = {
     price: PropTypes.string,
     buttonText: PropTypes.string,
     buttonClick: PropTypes.func,
-    img: PropTypes.string
+    img: PropTypes.element
 }
 
 export default Product

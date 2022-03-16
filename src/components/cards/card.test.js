@@ -23,7 +23,7 @@ test('article avatar',()=>{
     expect(screen.getByRole('img')).toBeInTheDocument()
 })
 test('article author',()=>{
-    render(<Article author="john doe"/>)
+    render(<Article author={<a>john doe</a>}/>)
     expect(screen.getByText('john doe')).toBeInTheDocument()
 })
 test('render articleImage',()=>{
@@ -31,8 +31,8 @@ test('render articleImage',()=>{
     expect(screen.getByTestId('withImage')).toBeInTheDocument()
 })
 test('articleImage Image',()=>{
-    render(<ArticleWithImage img="/image"/>)
-    expect(screen.getByRole('img')).toBeInTheDocument()
+    render(<ArticleWithImage img={<img src="/img" alt="article"/>}/>)
+    expect(screen.getByTestId('img')).toBeInTheDocument()
 })
 test('articleImage tag',()=>{
     render(<ArticleWithImage tag="design"/>)

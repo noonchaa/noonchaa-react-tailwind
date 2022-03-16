@@ -11,14 +11,14 @@ const code = <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-whi
 
 export const userDetail = args => (
     <UserDetail
-        img="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
         status="Coding"
-        name='Jane Doe'
         role="React Developer"
         job="Freelance"
         address="Jakarta"
-        email="JaneDoe@email.com"
+        email="JohnDoe@email.com"
         {...args}
+        img={<img src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt='avatar'/>}
+        name={<a>John Doe</a>}
         statusIcon={code}
     />
 )

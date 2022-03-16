@@ -32,11 +32,7 @@ Article.propTypes = {
     title: PropTypes.element,
     linkRead: PropTypes.element,
     avatar: PropTypes.string,
-    author: PropTypes.string
-}
-
-Article.defaultProps = {
-    title: <a>Accessibility tools for designers and developers</a>,
+    author: PropTypes.element
 }
 
 export default Article
