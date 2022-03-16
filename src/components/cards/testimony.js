@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types'
 
 const Testimony = ({img,title,content,name,color}) => (
-    <div className="max-w-md px-8 py-4 mx-auto mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+    <div data-testid='testy' className="max-w-md px-8 py-4 mx-auto mt-16 bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <div className="flex justify-center -mt-16 md:justify-end">
             <img className="object-cover w-20 h-20 border-2 border-blue-500 rounded-full dark:border-blue-400" style={color?{borderColor:color}:{}} alt="Testimonial avatar" src={img}/>
         </div>

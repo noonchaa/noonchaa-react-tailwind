@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const ArticleWithImage = ({children,img,tag,title,avatar,author,date}) => (
-    <div className="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <section data-testid='withImage' className="max-w-2xl mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
         {img && <img className="object-cover w-full h-64" src={img} alt="Article"/>}
 
         <div className="p-6">
@@ -22,7 +22,7 @@ const ArticleWithImage = ({children,img,tag,title,avatar,author,date}) => (
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 )
 
 ArticleWithImage.propTypes = {

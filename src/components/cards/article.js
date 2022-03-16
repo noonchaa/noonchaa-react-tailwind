@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from '../button'
 
 const Article = ({children,date,onClick,buttonText,title,linkRead,avatar,author}) => (
-    <div className="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <section data-testid='article' className="max-w-2xl px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="flex items-center justify-between">
             <span className="text-sm font-light text-gray-600 dark:text-gray-400">{date}</span>
             {buttonText && <Button size='small' onClick={onClick}>{buttonText}</Button>}
@@ -22,7 +22,7 @@ const Article = ({children,date,onClick,buttonText,title,linkRead,avatar,author}
                 {author && <div className="font-bold text-gray-700 cursor-pointer dark:text-gray-200">{author}</div>}
             </div>
         </div>
-    </div>
+    </section>
 )
 
 Article.propTypes = {

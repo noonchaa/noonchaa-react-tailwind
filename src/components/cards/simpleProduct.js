@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types'
 
 const SimpleProduct = ({img,title,price,buttonText,buttonClick}) => (
-    <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
+    <div data-testid='simple' className="flex flex-col items-center justify-center max-w-sm mx-auto">
         <div className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md" style={{backgroundImage:`url(${img})`}}></div>
 
         <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
