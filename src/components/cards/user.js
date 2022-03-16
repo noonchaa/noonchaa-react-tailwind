@@ -1,14 +1,21 @@
 import React from "react";
 import PropTypes from 'prop-types'
 
-const User = () => (
-    <div className="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-        <img className="object-cover w-full h-56" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar"/>
+const User = ({img,name,role}) => (
+    <div data-testid='user' className="max-w-xs mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <img className="object-cover w-full h-56" src={img} alt="avatar"/>
         
         <div className="py-5 text-center">
-            <a href="#" className="block text-2xl font-bold text-gray-800 dark:text-white">John Doe</a>
-            <span className="text-sm text-gray-700 dark:text-gray-200">Software Engineer</span>
+            <div className="block text-2xl font-bold text-gray-800 dark:text-white cursor-pointer">{name}</div>
+            <span className="text-sm text-gray-700 dark:text-gray-200">{role}</span>
         </div>
     </div>
 )
+
+User.propTypes = {
+    img: PropTypes.string,
+    name: PropTypes.element,
+    role: PropTypes.string
+}
+
 export default User

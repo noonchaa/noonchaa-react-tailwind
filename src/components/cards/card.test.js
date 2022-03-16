@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
-import {Article,ArticleWithImage,Product,ProductRating,SimpleProduct,Testimony} from './'
+import {Article,ArticleWithImage,Product,ProductRating,SimpleProduct,Testimony,User,UserDetail} from './'
 
 afterEach(cleanup)
 
@@ -65,4 +65,16 @@ test('render testimony card',()=>{
 test('border color',()=>{
     render(<Testimony color="#000000"/>)
     expect(screen.getByRole('img')).toHaveStyle({borderColor:'#000000'})
+})
+test('user card',()=>{
+    render(<User/>)
+    expect(screen.getByTestId('user')).toBeInTheDocument()
+})
+test('user Detail',()=>{
+    render(<UserDetail/>)
+    expect(screen.getByTestId('detail')).toBeInTheDocument()
+})
+test('user Detail status',()=>{
+    render(<UserDetail statusIcon={<p>icon</p>}/>)
+    expect(screen.getByTestId('status')).toHaveClass('mx-3')
 })
