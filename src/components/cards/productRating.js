@@ -5,7 +5,7 @@ const ProductRating = ({img,title,desc,price,buttonText,buttonClick,star}) => {
     let rating = star <= 5 ? Array(star).fill(1,0,star) : Array(5).fill(1,0,5)
     return(
         <div data-testid='product-rating' className="flex max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-            <div className="w-1/3 bg-cover" style={{backgroundImage:`url(${img})`}}></div>
+            <div className="w-1/3 bg-cover bg-center" style={{backgroundImage:`url(${img})`}}></div>
     
             <div className="w-2/3 p-4 md:p-4">
                 <h1 className="text-2xl font-bold text-gray-800 dark:text-white">{title}</h1>

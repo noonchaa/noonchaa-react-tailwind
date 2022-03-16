@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, render, screen } from "@testing-library/react";
-import {Article,ArticleWithImage,Product,ProductRating,SimpleProduct,Testimony} from './'
+import {Article,ArticleWithImage,Product,ProductRating,SimpleProduct,Testimony,User,UserDetail} from './'
 
 afterEach(cleanup)
 
@@ -23,7 +23,7 @@ test('article avatar',()=>{
     expect(screen.getByRole('img')).toBeInTheDocument()
 })
 test('article author',()=>{
-    render(<Article author="john doe"/>)
+    render(<Article author={<a>john doe</a>}/>)
     expect(screen.getByText('john doe')).toBeInTheDocument()
 })
 test('render articleImage',()=>{
@@ -31,8 +31,8 @@ test('render articleImage',()=>{
     expect(screen.getByTestId('withImage')).toBeInTheDocument()
 })
 test('articleImage Image',()=>{
-    render(<ArticleWithImage img="/image"/>)
-    expect(screen.getByRole('img')).toBeInTheDocument()
+    render(<ArticleWithImage img={<img src="/img" alt="article"/>}/>)
+    expect(screen.getByTestId('img')).toBeInTheDocument()
 })
 test('articleImage tag',()=>{
     render(<ArticleWithImage tag="design"/>)
@@ -65,4 +65,16 @@ test('render testimony card',()=>{
 test('border color',()=>{
     render(<Testimony color="#000000"/>)
     expect(screen.getByRole('img')).toHaveStyle({borderColor:'#000000'})
+})
+test('user card',()=>{
+    render(<User/>)
+    expect(screen.getByTestId('user')).toBeInTheDocument()
+})
+test('user Detail',()=>{
+    render(<UserDetail/>)
+    expect(screen.getByTestId('detail')).toBeInTheDocument()
+})
+test('user Detail status',()=>{
+    render(<UserDetail statusIcon={<p>icon</p>}/>)
+    expect(screen.getByTestId('status')).toHaveClass('mx-3')
 })
