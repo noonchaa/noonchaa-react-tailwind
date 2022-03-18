@@ -8,6 +8,10 @@ test('render question box',()=>{
     render(<Question/>)
     expect(screen.getByTestId('question')).toBeInTheDocument()
 })
+test('gray background',()=>{
+    render(<Question gray/>)
+    expect(screen.getByTestId('question')).toHaveClass('bg-gray-100')
+})
 test('open the answer',()=>{
     render(<Question/>)
     expect(screen.getByTestId('text')).toHaveClass('hidden')

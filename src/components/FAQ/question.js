@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types'
 
-const Question = ({title,children}) => {
+const Question = ({title,children,gray}) => {
     const [open,setOpen] = useState(false)
 
     return(
-        <div data-testid='question' className="border-2 border-gray-100 rounded-lg dark:border-gray-700">
+        <div data-testid='question' className={`border-2 border-gray-100 rounded-lg dark:border-gray-700 ${gray&&'bg-gray-100 dark:bg-gray-800 border-0'}`}>
             <button className="flex items-center justify-between w-full p-8" onClick={()=>setOpen(!open)}>
                 <h1 className="font-semibold text-gray-700 dark:text-white">{title}</h1>
                 {open?
@@ -23,7 +23,7 @@ const Question = ({title,children}) => {
                 </span>}
             </button>
 
-            <hr className="border-gray-200 dark:border-gray-700"/>
+            {open&&<hr className="border-gray-200 dark:border-gray-700"/>}
 
             <div data-testid='text' className={open?"p-8 text-sm text-gray-500 dark:text-gray-300":'hidden'}>
                 {children}
@@ -33,7 +33,8 @@ const Question = ({title,children}) => {
 }
 
 Question.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    gray: PropTypes.bool
 }
 
 export default Question
