@@ -5,6 +5,7 @@ const Collapse = ({title,children}) => {
     const [open,setOpen] = useState(false)
     
     return(
+        <>
         <div data-testid='collapse'>
             <button className="flex items-center focus:outline-none" onClick={()=>setOpen(!open)}>
                 {open?
@@ -27,6 +28,9 @@ const Collapse = ({title,children}) => {
                 </div>
             </div>
         </div>
+        <hr className="my-8 border-gray-200 dark:border-gray-700"/>
+        </>
+
     )
 }
 

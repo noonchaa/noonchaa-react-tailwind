@@ -1,6 +1,6 @@
 import React from "react";
 import { cleanup, render, screen } from '@testing-library/react'
-import {CenteredFAQ,FAQ,GridFAQ} from '.'
+import {CenteredFAQ,FAQ,GridFAQ,CollapseFAQ} from '.'
 
 afterEach(cleanup)
 
@@ -14,5 +14,9 @@ test('render FAQ',()=>{
 })
 test('render grid FAQ',()=>{
     render(<GridFAQ title="FAQ"/>)
+    expect(screen.getByText('FAQ')).toBeInTheDocument()
+})
+test('render collapse FAQ',()=>{
+    render(<CollapseFAQ title="FAQ"/>)
     expect(screen.getByText('FAQ')).toBeInTheDocument()
 })
