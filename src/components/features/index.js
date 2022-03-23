@@ -1,2 +1,8 @@
 export {default as Simple} from './simple'
 export {default as SimpleFeature} from './simpleFeature'
+export {default as Card} from './card'
+export {default as CardFeature} from './cardFeature'
+export {default as LeftIcon} from './leftIcon'
+export {default as MediaFeature} from './mediaFeature'
+export {default as Grid} from './grid'
+export {default as GridFeature} from './gridFeature'
